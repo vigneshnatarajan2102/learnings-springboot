@@ -1,0 +1,13 @@
+name: Ignore Main Branch Workflow
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  run-on-non-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Branch
+        run: echo "This workflow runs only when NOT pushing to main"
