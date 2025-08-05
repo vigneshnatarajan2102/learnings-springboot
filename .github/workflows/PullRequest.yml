@@ -1,0 +1,12 @@
+name: On Pull Request Assigned
+
+on:
+  pull_request:
+    types: [assigned]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo message
+        run: echo "Pull request has been assigned!"
