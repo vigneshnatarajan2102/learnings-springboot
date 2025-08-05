@@ -2,7 +2,7 @@ name: On Pull Request Assigned
 
 on:
   pull_request:
-    types: [assigned,opened]
+    types: [assigned,opened,closed]
 
 jobs:
   say-hello:
