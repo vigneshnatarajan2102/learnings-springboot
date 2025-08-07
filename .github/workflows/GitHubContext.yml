@@ -11,3 +11,5 @@ jobs:
           echo "Actor: ${{ github.actor }}"
           echo "Repo: ${{ github.repository }}"
           echo "Branch: ${{ github.ref }}"
+          echo "Branch: ${{ github.workflow}}"
+          
