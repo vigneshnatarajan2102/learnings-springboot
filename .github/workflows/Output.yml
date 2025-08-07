@@ -1,0 +1,19 @@
+name: Needs Output with Dispatch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_a:
+    runs-on: ubuntu-latest
+    outputs:
+      myvalue: ${{ steps.step1.outputs.out }}
+    steps:
+      - id: step1
+        run: echo "out=Hello from job A" >> $GITHUB_OUTPUT
+
+  job_b:
+    needs: job_a
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ needs.job_a.outputs.myvalue }}"
