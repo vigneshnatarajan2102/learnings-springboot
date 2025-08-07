@@ -1,0 +1,17 @@
+name: Environment Only Workflow
+
+on: workflow_dispatch
+
+jobs:
+  env-demo:
+    runs-on: ubuntu-latest
+    env:
+      MY_ENV_VAR: "Hello from env"
+      APP_ENV: "production"
+      VERSION: "1.0.0"
+    steps:
+      - name: Print custom environment variables
+        run: |
+          echo "MY_ENV_VAR = $MY_ENV_VAR"
+          echo "APP_ENV = $APP_ENV"
+          echo "VERSION = $VERSION"
