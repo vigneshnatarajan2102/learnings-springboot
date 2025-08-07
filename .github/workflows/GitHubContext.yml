@@ -1,4 +1,4 @@
-name: GitHub Context 
+name: GitHub Context
 
 on: workflow_dispatch
 
@@ -11,5 +11,8 @@ jobs:
           echo "Actor: ${{ github.actor }}"
           echo "Repo: ${{ github.repository }}"
           echo "Branch: ${{ github.ref }}"
-          echo "Branch: ${{ github.workflow}}"
-          
+          echo "Workflow: ${{ github.workflow }}"
+
+      - name: Run script only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This runs only on the main branch"
