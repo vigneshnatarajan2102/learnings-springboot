@@ -15,4 +15,4 @@ jobs:
           echo "MY_ENV_VAR = $MY_ENV_VAR"
           echo "APP_ENV = $APP_ENV"
           echo "VERSION = $VERSION"
-          echo "globalvariable =$MY_VAR"
+          
