@@ -1,0 +1,13 @@
+name: Use Repo Variable
+
+on: workflow_dispatch
+
+env:
+  MY_VAR: ${{ vars.MY_VAR }}
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show MY_VAR
+        run: echo "Value is $MY_VAR"
