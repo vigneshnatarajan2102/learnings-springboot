@@ -1,1 +1,13 @@
-Git 
+name: GitHub Context 
+
+on: workflow_dispatch
+
+jobs:
+  print-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show GitHub Context Info
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repo: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
