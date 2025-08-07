@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14, 16, 18]
-      fail-fast: false  # prevents cancelling all jobs if one fails
+        node-version: [14, 16]
+      fail-fast: true  # prevents cancelling all jobs if one fails
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
