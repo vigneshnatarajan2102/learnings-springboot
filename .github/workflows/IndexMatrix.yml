@@ -1,0 +1,30 @@
+name: Matrix with Index Simulation
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - index: 0
+            node-version: 14
+          - index: 1
+            node-version: 16
+          - index: 2
+            node-version: 18
+
+    steps:
+      - name: Print Job Index and Node Version
+        run: |
+          echo "Job Index: ${{ matrix.index }}"
+          echo "Node Version: ${{ matrix.node-version }}"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Show Node Version
+        run: node -v
