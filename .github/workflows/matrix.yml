@@ -1,0 +1,14 @@
+name: Matrix Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1.0, 2.0, 3.0]
+    steps:
+      - name: Print matrix version
+        run: echo "Matrix version is ${{ matrix.version }}"
