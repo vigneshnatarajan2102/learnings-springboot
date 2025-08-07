@@ -1,27 +1,26 @@
-name: Parallel Matrix Example
+name: Matrix Parallel
 
-on: 
-   workflow_dispatch
+on:
+  workflow_dispatch:
 
 jobs:
-  build:
+  matrix-job:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14, 16]
-      fail-fast: true  # prevents cancelling all jobs if one fails
+        os: [ubuntu-latest, windows-latest]
+        version: [1.0, 2.0]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Print version and OS
+        run: echo "Running on ${{ matrix.os }} with version ${{ matrix.version }}"
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      - name: Simulate Success or Failure
+        run: |
+          echo "Checking for failure condition..."
+          if [ "${{ matrix.version }}" == "2.0" ]; then
+            echo "Failing job for version 2.0"
+            exit 1
+          else
+            echo "Success for version 1.0"
+          fi
+        shell: bash
